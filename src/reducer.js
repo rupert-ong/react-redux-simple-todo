@@ -3,7 +3,7 @@ import { List, Map } from 'immutable';
 const init = List([]);
 
 export default function (todos = init, action) {
-  switch (action_type) {
+  switch (action.type) {
     case 'ADD_TO':
       return todos.push(Map(action.payload));
     case 'TOGGLE_TODO':
