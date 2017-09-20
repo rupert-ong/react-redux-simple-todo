@@ -10,7 +10,7 @@ export function Todo(props) {
 }
 
 export function TodoList(props) {
-  const { todos, toggleTodo, addTodo } = props;
+  const { todos, toggleTodo, addTodo, clearAllTodo } = props;
 
   const onSubmit = (event) => {
     const input = event.target;
@@ -22,13 +22,18 @@ export function TodoList(props) {
       input.value = '';
       addTodo(text);
     }
-  }
+  };
 
   const toggleClick = id => event => toggleTodo(id);
 
+  const clearList = event => clearAllTodo();
+
   return (
     <div className='todo'>
-      <input type='text' className='todo__entry' placeholder='Add todo' onKeyDown={onSubmit} />
+      <div className='todo__container'>
+        <input type='text' className='todo__entry' placeholder='Add todo' onKeyDown={onSubmit} />
+        <button className='todo__button todo__button--danger' onClick={clearList}>Clear List</button>
+      </div>
       <ul className='todo__list'>
         {todos.map(t => (
           <li key={t.get('id')} className='todo__item' onClick={toggleClick(t.get('id'))}>

@@ -10,7 +10,22 @@ html, body, input, button {
     "Droid Sans",
     "Helvetica Neue", 
     sans-serif;
-    font-size: 20px;
+    font-size: 18px;
+  }
+
+  button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+  }
+
+  .todo__container {
+    display: flex;
+    margin: 0 -10px;
+  }
+
+  .todo__container > * {
+    flex: 1;
+    margin: 10px;
   }
   
   .todo__list {
@@ -41,15 +56,24 @@ html, body, input, button {
   .todo__button {
     border: 0;
     border-radius: .2em;
-    background: #71B7FF;  
+    background-color: #71B7FF;  
     color: #fff;
-    padding: .25em .5em;
-    margin: .5em 0;
-    margin-right: .25em;
     cursor: pointer;
+    flex: 0;
+    line-height:1.4;
+    padding: .25em .5em;
+    text-align: center;
+    white-space: nowrap;
   }
   
   .todo__button:hover {
     background: #B2D8FF;
   }
+
+  .todo__button--danger {
+    background-color: #c9302c;
+  }
   
+  .todo__button--danger:hover{
+    background-color: #d9534f;
+  }  

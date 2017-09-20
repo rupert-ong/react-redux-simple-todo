@@ -14,6 +14,8 @@ export default function reducer(todos = init, action) {
           return t;
         }
       });
+    case 'CLEAR_ALL_TODO':
+      return todos.clear();
     default:
       return todos;
   }
