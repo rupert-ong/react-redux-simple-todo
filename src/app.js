@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
+import { createStore } from 'redux';
 import { TodoList } from './components';
 import { List, Map } from 'immutable';
+import reducer from './reducer';
 
 // Translate dummy data to Immutable JS collections
 const dummyTodos = List([
@@ -11,7 +13,9 @@ const dummyTodos = List([
   Map({ id: 3, isDone: false, text: 'connect components'})
 ]);
 
+const store = createStore(reducer);
+
 render(
-  <TodoList todos={dummyTodos} />, 
+  <TodoList todos={store.getState()} />, 
   document.getElementById('app')
 );
