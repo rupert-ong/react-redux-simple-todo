@@ -25,7 +25,7 @@ Or you can run the following to watch for changes
 npm run watch
 ```
 
-##Built With
+## Built With
 
 * [React](https://facebook.github.io/react/)
 * [Redux](http://redux.js.org/)
