@@ -1,6 +1,6 @@
 # Simple React Redux Todo List
 
-Strictly for educational purposes only, a todo list exercise as seen on [Sitepoint](https://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js).
+A todo list based on [Sitepoint's Todo List](https://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js) with additional functionality to delete items individually and all together.
 
 ## Getting Started
 
