@@ -10,7 +10,7 @@ export function Todo(props) {
 }
 
 export function TodoList(props) {
-  const { todos, toggleTodo, addTodo, clearAllTodo } = props;
+  const { todos, toggleTodo, addTodo, deleteTodo, clearAllTodo } = props;
 
   const onSubmit = (event) => {
     const input = event.target;
@@ -26,6 +26,8 @@ export function TodoList(props) {
 
   const toggleClick = id => event => toggleTodo(id);
 
+  const deleteClick = id => event => deleteTodo(id);
+
   const clearList = event => clearAllTodo();
 
   return (
@@ -38,6 +40,7 @@ export function TodoList(props) {
         {todos.map(t => (
           <li key={t.get('id')} className='todo__item' onClick={toggleClick(t.get('id'))}>
             <Todo todo={t.toJS()} />
+            <button key={t.get('id')} className='todo__button' onClick={deleteClick(t.get('id'))}> Delete</button>
           </li>
         ))}
       </ul>

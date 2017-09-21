@@ -2,7 +2,7 @@
 // to make components aware of the store
 import { connect } from 'react-redux';
 import * as components from './components';
-import { addTodo, toggleTodo, clearAllTodo } from './actions';
+import { addTodo, toggleTodo, deleteTodo, clearAllTodo } from './actions';
 
 export const TodoList = connect(
     function mapStateToProps(state) {
@@ -14,6 +14,7 @@ export const TodoList = connect(
         return {
             addTodo: text => dispatch(addTodo(text)),
             toggleTodo: id => dispatch(toggleTodo(id)),
+            deleteTodo: id => dispatch(deleteTodo(id)),
             clearAllTodo: () => dispatch(clearAllTodo())
         };
     })(components.TodoList);

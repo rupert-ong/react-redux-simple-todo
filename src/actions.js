@@ -19,7 +19,14 @@ export function toggleTodo(id) {
   };
 }
 
-export function clearAllTodo(){
+export function deleteTodo(id) {
+  return {
+    type: 'DELETE_TODO',
+    payload: id
+  }
+}
+
+export function clearAllTodo() {
   return {
     type: 'CLEAR_ALL_TODO',
     payload: ''
