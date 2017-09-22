@@ -40,7 +40,7 @@ export function TodoList(props) {
         {todos.map(t => (
           <li key={t.get('id')} className='todo__item' onClick={toggleClick(t.get('id'))}>
             <Todo todo={t.toJS()} />
-            <button key={t.get('id')} className='todo__button' onClick={deleteClick(t.get('id'))}> Delete</button>
+            <button className='todo__button' onClick={deleteClick(t.get('id'))}> Delete</button>
           </li>
         ))}
       </ul>
