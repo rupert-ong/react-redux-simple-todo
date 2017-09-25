@@ -1,8 +1,27 @@
 import React from 'react';
 
 export function Todo(props) {
-  const { todo } = props;
-  if (todo.isDone) {
+  const { todo, editSubmit, editOff } = props;
+
+  const onFocus = event => {
+    event.target.select();
+  };
+
+  const onSubmit = id => event => {
+    const input = event.target;
+    const text = input.value;
+    const isEnterKey = event.which == 13;
+    const isLongEnough = text.length > 0;
+
+    if (isEnterKey && isLongEnough) {
+      editSubmit(id, input.value);
+      editOff();
+    }
+  };
+
+  if (todo.isEdit) {
+    return <input type='input' defaultValue={todo.text} autoFocus onFocus={onFocus} onKeyDown={onSubmit(todo.id)} onBlur={editOff}/>
+  } else if (todo.isDone) {
     return <strike>{todo.text}</strike>
   } else {
     return <span>{todo.text}</span>
@@ -10,7 +29,7 @@ export function Todo(props) {
 }
 
 export function TodoList(props) {
-  const { todos, toggleTodo, addTodo, deleteTodo, clearAllTodo } = props;
+  const { todos, toggleTodo, addTodo, deleteTodo, clearAllTodo, editTodo, setEditTodoTrue, setEditTodoFalse } = props;
 
   const onSubmit = (event) => {
     const input = event.target;
@@ -28,7 +47,11 @@ export function TodoList(props) {
 
   const deleteClick = id => event => deleteTodo(id);
 
+  const editClick = id => event => { event.stopPropagation(); setEditTodoTrue(id); }
+
   const clearList = event => clearAllTodo();
+
+  const editOff = event => setEditTodoFalse();
 
   return (
     <div className='todo'>
@@ -39,7 +62,10 @@ export function TodoList(props) {
       <ul className='todo__list'>
         {todos.map(t => (
           <li key={t.get('id')} className='todo__item' onClick={toggleClick(t.get('id'))}>
-            <Todo todo={t.toJS()} />
+            <Todo todo={t.toJS()} editOff={editOff} editSubmit={editTodo}/>
+            { !t.get('isEdit') &&
+              <button className='todo__button' onClick={editClick(t.get('id'))}>Edit</button>
+            }
             <button className='todo__button' onClick={deleteClick(t.get('id'))}> Delete</button>
           </li>
         ))}

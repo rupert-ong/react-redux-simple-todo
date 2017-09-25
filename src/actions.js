@@ -7,6 +7,7 @@ export function addTodo(text) {
     payload: {
       id: uid(),
       isDone: false,
+      isEdit: false,
       text: text
     }
   };
@@ -19,6 +20,16 @@ export function toggleTodo(id) {
   };
 }
 
+export function editTodo(id, text) {
+  return {
+    type: 'EDIT_TODO',
+    payload: {
+      id: id,
+      text: text
+    }
+  };
+}
+
 export function deleteTodo(id) {
   return {
     type: 'DELETE_TODO',
@@ -28,7 +39,19 @@ export function deleteTodo(id) {
 
 export function clearAllTodo() {
   return {
-    type: 'CLEAR_ALL_TODO',
-    payload: ''
+    type: 'CLEAR_ALL_TODO'
   };
+}
+
+export function setEditTodoTrue(id) {
+  return {
+    type: 'EDIT_TODO_TRUE',
+    payload: id
+  }
+}
+
+export function setEditTodoFalse() {
+  return {
+    type: 'EDIT_TODO_FALSE'
+  }
 }
