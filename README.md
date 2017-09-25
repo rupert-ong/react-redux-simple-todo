@@ -1,6 +1,9 @@
 # Simple React Redux Todo List
 
-A todo list based on [Sitepoint's Todo List](https://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js) with additional functionality to delete items individually and all together.
+A todo list based on [Sitepoint's Todo List](https://www.sitepoint.com/how-to-build-a-todo-app-using-react-redux-and-immutable-js) with additional functionality:
+* Edit an item
+* Delete an item 
+* Delete all items
 
 ## Getting Started
 
@@ -36,6 +39,9 @@ npm run watch
 ## Versioning
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/rupert-ong/react-redux-simple-todo/tags). 
+
+## Authors
+* [Rupert Ong](https://github.com/rupert-ong/) - *Additional Functionality and Refinement*
 
 ## License
 
